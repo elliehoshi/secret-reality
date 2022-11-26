@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/secret-reality/static/css/main.2870193b.css",
-    "main.js": "/secret-reality/static/js/main.d6a5eddd.js",
+    "main.css": "/secret-reality/static/css/main.ece77425.css",
+    "main.js": "/secret-reality/static/js/main.320bc107.js",
     "static/js/787.3a417920.chunk.js": "/secret-reality/static/js/787.3a417920.chunk.js",
-    "static/media/logo.svg": "/secret-reality/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/asset.jpeg": "/secret-reality/static/media/asset.c09074ee956658035fab.jpeg",
+    "static/media/marker.patt": "/secret-reality/static/media/marker.84b79b17e94c92acf0e2.patt",
     "index.html": "/secret-reality/index.html",
-    "main.2870193b.css.map": "/secret-reality/static/css/main.2870193b.css.map",
-    "main.d6a5eddd.js.map": "/secret-reality/static/js/main.d6a5eddd.js.map",
+    "main.ece77425.css.map": "/secret-reality/static/css/main.ece77425.css.map",
+    "main.320bc107.js.map": "/secret-reality/static/js/main.320bc107.js.map",
     "787.3a417920.chunk.js.map": "/secret-reality/static/js/787.3a417920.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2870193b.css",
-    "static/js/main.d6a5eddd.js"
+    "static/css/main.ece77425.css",
+    "static/js/main.320bc107.js"
   ]
 }

@@ -1,27 +1,38 @@
-import logo from './logo.svg';
+import marker from './marker.patt';
+import asset from './asset.jpeg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-
       <a-scene
-        vr-mode-ui="enabled: false"
-        arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+        vr-mode-ui="enabled: false;"
+        loading-screen="enabled: false;"
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true;"
+        id="scene"
+        embedded
+        gesture-detector
       >
-        <a-text
-          value="This content will always face you."
-          look-at="[gps-camera]"
-          scale="120 120 120"
-          gps-entity-place="latitude: 37.87598° N; longitude: 122.25882° W;"
-        ></a-text>
-        <a-camera gps-camera rotation-reader> </a-camera>
+        <a-marker
+          id="animated-marker"
+          type="pattern"
+          preset="custom"
+          url={marker}
+          raycaster="objects: .clickable"
+          emitevents="true"
+          cursor="fuse: false; rayOrigin: mouse;"
+          id="markerA"
+        >
+          <a-image
+            src={asset}
+            scale="1 1 1"
+            class="clickable"
+            rotation="-90 0 0"
+            gesture-handler
+          ></a-image>
+        </a-marker>
+
+        <a-entity camera></a-entity>
       </a-scene>
     </div>
   );

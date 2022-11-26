@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Secret Reality
+
+Front end AR codebase for TDF I-5 Team 5 final project.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
