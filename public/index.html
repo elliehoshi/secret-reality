@@ -31,13 +31,29 @@
     <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
     <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
     <!-- End AR.js test -->
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- End Fonts -->
     <style>
       #secret {
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        margin: -50px 0 0 -50px;
         position: absolute;
-        top: 0;
-        margin: 3em auto;
+
+        padding: 4em;
+        background-color: antiquewhite;
+        color: maroon;
         text-align: center;
-        width: 100%;
+
+        font-family: 'EB Garamond', serif;
+        font-style: italic;
+        font-size: 1.5rem;
       }
 
       .hide {
@@ -50,13 +66,41 @@
     </style>
  
     <script>
+      var secretData = {
+        "name": "Secret seed data",
+        "secrets": [
+          {
+            "text": "I have a nicotine addiction.",
+            "spirit_animal": "crane",
+            "is_private": "false",
+            "id": "001"
+          },
+          {
+            "text": "I am bisexual.",
+            "spirit_animal": "elephant",
+            "is_private": "true",
+            "id": "002"
+          },
+          {
+            "text": "I like dubstep.",
+            "spirit_animal": "frog",
+            "is_private": "false",
+            "id": "003"
+          }
+        ]
+      };
+  
       AFRAME.registerComponent('clicker', {
         init: function() {
           this.el.addEventListener('click', () => {
             var x = document.getElementById("secret");
+            var secretText = secretData.secrets[0].text;
+            console.log('secretText ', secretText); 
             if (x.classList.contains("hide")) {
               x.classList.add("show");
               x.classList.remove("hide");
+
+              x.innerHTML = secretText;
             } else {
               x.classList.add("hide");
               x.classList.remove("show");
@@ -67,7 +111,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="secret" class="hide"><img src="./tdf-secret-1.png"/></div>
+    <div id="secret" class="hide"></div>
     <a-scene
       vr-mode-ui="enabled: false;"
       loading-screen="enabled: false;"
@@ -102,9 +146,6 @@
 
     <div id="root"></div>
     <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
       You can add webfonts, meta tags, or analytics to this file.
       The build step will place the bundled scripts into the <body> tag.
 
