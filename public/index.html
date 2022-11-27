@@ -31,17 +31,43 @@
     <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
     <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
     <!-- End AR.js test -->
+    <style>
+      #secret {
+        position: absolute;
+        top: 0;
+        margin: 3em auto;
+        text-align: center;
+        width: 100%;
+      }
+
+      .hide {
+        opacity: 0;
+      }
+
+      .show {
+        opacity: 1;
+      }
+    </style>
+ 
     <script>
       AFRAME.registerComponent('clicker', {
         init: function() {
           this.el.addEventListener('click', () => {
-            alert('Clicked!')
+            var x = document.getElementById("secret");
+            if (x.classList.contains("hide")) {
+              x.classList.add("show");
+              x.classList.remove("hide");
+            } else {
+              x.classList.add("hide");
+              x.classList.remove("show");
+            }
         });
       }});
     </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="secret" class="hide"><img src="./tdf-secret-1.png"/></div>
     <a-scene
       vr-mode-ui="enabled: false;"
       loading-screen="enabled: false;"
@@ -64,6 +90,7 @@
           src="./crane.png"
           scale="1 1 1"
           class="clickable"
+          id="origami"
           rotation="-90 0 0"
           gesture-handler
           clicker
