@@ -94,12 +94,12 @@
         init: function() {
           this.el.addEventListener('markerFound', (e) => {
             console.log("marker found");
-            var markerEl = document.getElementById("animated-marker");
+            var markerEl = document.getElementById("markerA");
             markerEl.classList.add("marker-found");
         });
         this.el.addEventListener('markerLost', (e) => {
           console.log("marker lost");
-            var markerEl = document.getElementById("animated-marker");
+            var markerEl = document.getElementById("markerA");
             markerEl.classList.add("marker-found");
         });
       }});
@@ -108,7 +108,7 @@
         init: function() {
           this.el.addEventListener('click', () => {
             var x = document.getElementById("secret");
-            var markerEl = document.getElementById("animated-marker");
+            var markerEl = document.getElementById("markerA");
             console.log("clicked!!!!!!");
             // if (x.classList.contains("hide") && markerEl.classList.contains("marker-found")) {
             if (x.classList.contains("hide")) {
@@ -137,8 +137,9 @@
       embedded
       gesture-detector
     >
+
+    <!-- Marker and ornament 1 -->
       <a-marker
-        id="animated-marker"
         type="pattern"
         preset="custom"
         url="https://raw.githubusercontent.com/elliehoshi/secret-reality/main/src/pattern-tdf-marker.patt"
@@ -149,13 +150,55 @@
         checkMarkerStatus
       >
         <a-image
-          src="./crane.png"
+          src="./hidden-ornament.png"
           scale="1 1 1"
           class="clickable"
           id="origami"
           rotation="-90 0 0"
           gesture-handler
           clicker
+        ></a-image>
+      </a-marker>
+
+      <!-- Marker and ornament 2 -->
+      <a-marker
+        type="pattern"
+        preset="custom"
+        url="%PUBLIC_URL%/pattern-tdf-1ornament-marker.patt"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        id="markerB"
+        checkMarkerStatus
+      >
+        <a-image
+          src="./hidden-ramen.png"
+          scale="1 1 1"
+          class="clickable"
+          id="ornament-2"
+          rotation="-90 0 0"
+          gesture-handler
+        ></a-image>
+      </a-marker>
+
+      <!-- Marker and ornament 3 -->
+      <a-marker
+        type="pattern"
+        preset="custom"
+        url="%PUBLIC_URL%/pattern-tdf-2ornament-marker.patt"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        id="markerC"
+        checkMarkerStatus
+      >
+        <a-image
+          src="./hidden-faceted-reflection-ball.png"
+          scale="1 1 1"
+          class="clickable"
+          id="ornament-3"
+          rotation="-90 0 0"
+          gesture-handler
         ></a-image>
       </a-marker>
 
