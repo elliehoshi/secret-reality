@@ -89,17 +89,34 @@
           }
         ]
       };
-  
+
+      AFRAME.registerComponent('checkMarkerStatus', {
+        init: function() {
+          this.el.addEventListener('markerFound', (e) => {
+            console.log("marker found");
+            var markerEl = document.getElementById("animated-marker");
+            markerEl.classList.add("marker-found");
+        });
+        this.el.addEventListener('markerLost', (e) => {
+          console.log("marker lost");
+            var markerEl = document.getElementById("animated-marker");
+            markerEl.classList.add("marker-found");
+        });
+      }});
+
       AFRAME.registerComponent('clicker', {
         init: function() {
           this.el.addEventListener('click', () => {
             var x = document.getElementById("secret");
-            var secretText = secretData.secrets[0].text;
-            console.log('secretText ', secretText); 
+            var markerEl = document.getElementById("animated-marker");
+            console.log("clicked!!!!!!");
+            // if (x.classList.contains("hide") && markerEl.classList.contains("marker-found")) {
             if (x.classList.contains("hide")) {
               x.classList.add("show");
               x.classList.remove("hide");
-
+            
+              var secretText = secretData.secrets[0].text;
+              console.log('secretText ', secretText); 
               x.innerHTML = secretText;
             } else {
               x.classList.add("hide");
@@ -129,6 +146,7 @@
         emitevents="true"
         cursor="fuse: false; rayOrigin: mouse;"
         id="markerA"
+        checkMarkerStatus
       >
         <a-image
           src="./crane.png"
