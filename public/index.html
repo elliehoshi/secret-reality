@@ -37,34 +37,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- End Fonts -->
-    <style>
-      #secret {
-        width: 100px;
-        height: 100px;
-        top: 50%;
-        left: 50%;
-        margin: -50px 0 0 -50px;
-        position: absolute;
-
-        padding: 4em;
-        background-color: antiquewhite;
-        color: maroon;
-        text-align: center;
-
-        font-family: 'EB Garamond', serif;
-        font-style: italic;
-        font-size: 1.5rem;
-      }
-
-      .hide {
-        opacity: 0;
-      }
-
-      .show {
-        opacity: 1;
-      }
-    </style>
- 
     <script>
       var secretData = {
         "name": "Secret seed data",
@@ -132,7 +104,7 @@
         init: function() {
           this.el.addEventListener('click', () => {
             var x = document.getElementById("secret");
-            var markerEl = document.getElementById("markerA");
+            var markerEl = document.getElementById("markerB");
             console.log("clicked!!!!!!");
             // if (x.classList.contains("hide") && markerEl.classList.contains("marker-found")) {
             if (x.classList.contains("hide")) {
@@ -154,7 +126,7 @@
         init: function() {
           this.el.addEventListener('click', () => {
             var x = document.getElementById("secret");
-            var markerEl = document.getElementById("markerA");
+            var markerEl = document.getElementById("markerC");
             console.log("clicked!!!!!!");
             // if (x.classList.contains("hide") && markerEl.classList.contains("marker-found")) {
             if (x.classList.contains("hide")) {

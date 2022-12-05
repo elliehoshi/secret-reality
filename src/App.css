@@ -37,3 +37,31 @@ body {
   margin: 0;
   overflow: hidden;
 }
+
+/* SECRET REALITY */
+#secret {
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  position: absolute;
+
+  padding: 4em;
+  background-color: antiquewhite;
+  color: maroon;
+  text-align: center;
+
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  z-index: 999;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
