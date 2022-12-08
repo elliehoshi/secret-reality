@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/secret-reality/static/css/main.c52e3f30.css",
+    "main.css": "/secret-reality/static/css/main.6f0b6125.css",
     "main.js": "/secret-reality/static/js/main.f774de32.js",
     "static/js/787.3a417920.chunk.js": "/secret-reality/static/js/787.3a417920.chunk.js",
     "index.html": "/secret-reality/index.html",
-    "main.c52e3f30.css.map": "/secret-reality/static/css/main.c52e3f30.css.map",
+    "main.6f0b6125.css.map": "/secret-reality/static/css/main.6f0b6125.css.map",
     "main.f774de32.js.map": "/secret-reality/static/js/main.f774de32.js.map",
     "787.3a417920.chunk.js.map": "/secret-reality/static/js/787.3a417920.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c52e3f30.css",
+    "static/css/main.6f0b6125.css",
     "static/js/main.f774de32.js"
   ]
 }
