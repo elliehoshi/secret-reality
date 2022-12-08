@@ -43,39 +43,49 @@
         "secrets": [
           {
             "text": "I want to share my husband.",
-            "spirit_animal": "crane",
-            "is_private": "false",
             "id": "001"
           },
           {
             "text": "I want to try LSD for the first time with someone.",
-            "spirit_animal": "elephant",
-            "is_private": "true",
             "id": "002"
           },
           {
             "text": "I'm gay. I don't know how to tell my parents.",
-            "spirit_animal": "frog",
-            "is_private": "false",
             "id": "003"
+          },
+          {
+            "text": "Incest",
+            "id": "004"
+          },
+          {
+            "text": "Why is it taboo for a couple to live together before they're married?",
+            "id": "005"
           }
         ]
       };
 
       // not working
-      AFRAME.registerComponent('checkMarkerStatus', {
-        init: function() {
-          this.el.addEventListener('markerFound', (e) => {
+      // AFRAME.registerComponent('checkMarkerStatus', {
+      //   init: function() {
+      //     this.el.addEventListener('markerFound', (e) => {
+      //       console.log("marker found");
+      //       var markerEl = document.getElementById("markerA");
+      //       markerEl.classList.add("marker-found");
+      //   });
+      //   this.el.addEventListener('markerLost', (e) => {
+      //     console.log("marker lost");
+      //       var markerEl = document.getElementById("markerA");
+      //       markerEl.classList.add("marker-found");
+      //   });
+      // }});
+
+      AFRAME.registerComponent('markerhandler', {
+        init: function () {
+          this.el.sceneEl.addEventListener('markerFound', () => {
             console.log("marker found");
-            var markerEl = document.getElementById("markerA");
-            markerEl.classList.add("marker-found");
-        });
-        this.el.addEventListener('markerLost', (e) => {
-          console.log("marker lost");
-            var markerEl = document.getElementById("markerA");
-            markerEl.classList.add("marker-found");
-        });
-      }});
+          })
+        }
+      });
 
       // ON CLICK SECRET 1
       AFRAME.registerComponent('clicker', {
@@ -84,55 +94,13 @@
             var x = document.getElementById("secret");
             var markerEl = document.getElementById("markerA");
             console.log("clicked!!!!!!");
-            // if (x.classList.contains("hide") && markerEl.classList.contains("marker-found")) {
             if (x.classList.contains("hide")) {
               x.classList.add("show");
               x.classList.remove("hide");
-            
-              var secretText = secretData.secrets[0].text;
-              console.log('secretText ', secretText); 
-              x.innerHTML = secretText;
-            } else {
-              x.classList.add("hide");
-              x.classList.remove("show");
-            }
-        });
-      }});
 
-      // ON CLICK SECRET 2
-      AFRAME.registerComponent('clicker2', {
-        init: function() {
-          this.el.addEventListener('click', () => {
-            var x = document.getElementById("secret");
-            var markerEl = document.getElementById("markerB");
-            console.log("clicked!!!!!!");
-            // if (x.classList.contains("hide") && markerEl.classList.contains("marker-found")) {
-            if (x.classList.contains("hide")) {
-              x.classList.add("show");
-              x.classList.remove("hide");
-            
-              var secretText = secretData.secrets[1].text;
-              console.log('secretText ', secretText); 
-              x.innerHTML = secretText;
-            } else {
-              x.classList.add("hide");
-              x.classList.remove("show");
-            }
-        });
-      }});
-
-      // ON CLICK SECRET 3
-      AFRAME.registerComponent('clicker3', {
-        init: function() {
-          this.el.addEventListener('click', () => {
-            var x = document.getElementById("secret");
-            var markerEl = document.getElementById("markerC");
-            console.log("clicked2!!!!!!");
-            if (x.classList.contains("hide")) {
-              x.classList.add("show");
-              x.classList.remove("hide");
-            
-              var secretText = secretData.secrets[2].text;
+              var secretArray = secretData.secrets;
+              var randomSecret = secretArray[Math.floor(Math.random()*secretArray.length)];
+              var secretText = randomSecret.text;
               console.log('secretText ', secretText); 
               x.innerHTML = secretText;
             } else {
@@ -159,65 +127,21 @@
       <a-marker
         type="pattern"
         preset="custom"
-        url="%PUBLIC_URL%/pattern-tdf-1ornament-marker.patt"
+        url="%PUBLIC_URL%/pattern-tdf-secret-marker.patt"
         raycaster="objects: .clickable"
         emitevents="true"
         cursor="fuse: false; rayOrigin: mouse;"
         id="markerA"
-        checkMarkerStatus
+        markerhandler
       >
         <a-image
-          src="./hidden-ornament.png"
+          src="https://cdn.aframe.io/examples/ui/karigurashi.jpg"
           scale="1 1 1"
           class="clickable"
           id="origami"
           rotation="-90 0 0"
           gesture-handler
           clicker
-        ></a-image>
-      </a-marker>
-
-      <!-- Marker and ornament 2 -->
-      <a-marker
-        type="pattern"
-        preset="custom"
-        url="%PUBLIC_URL%/pattern-tdf-2ornament-marker.patt"
-        raycaster="objects: .clickable"
-        emitevents="true"
-        cursor="fuse: false; rayOrigin: mouse;"
-        id="markerB"
-        checkMarkerStatus
-      >
-        <a-image
-          src="./hidden-ramen.png"
-          scale="1 1 1"
-          class="clickable"
-          id="ornament-2"
-          rotation="-90 0 0"
-          gesture-handler
-          clicker2
-        ></a-image>
-      </a-marker>
-
-      <!-- Marker and ornament 3 -->
-      <a-marker
-        type="pattern"
-        preset="custom"
-        url="%PUBLIC_URL%/pattern-tdf-3ornament-marker.patt"
-        raycaster="objects: .clickable"
-        emitevents="true"
-        cursor="fuse: false; rayOrigin: mouse;"
-        id="markerC"
-        checkMarkerStatus
-      >
-        <a-image
-          src="./hidden-faceted-reflection-ball.png"
-          scale="1 1 1"
-          class="clickable"
-          id="ornament-3"
-          rotation="-90 0 0"
-          gesture-handler
-          clicker3
         ></a-image>
       </a-marker>
 
