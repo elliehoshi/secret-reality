@@ -64,25 +64,30 @@
         ]
       };
 
-      // not working
-      // AFRAME.registerComponent('checkMarkerStatus', {
-      //   init: function() {
-      //     this.el.addEventListener('markerFound', (e) => {
-      //       console.log("marker found");
-      //       var markerEl = document.getElementById("markerA");
-      //       markerEl.classList.add("marker-found");
-      //   });
-      //   this.el.addEventListener('markerLost', (e) => {
-      //     console.log("marker lost");
-      //       var markerEl = document.getElementById("markerA");
-      //       markerEl.classList.add("marker-found");
-      //   });
-      // }});
+      let secretEnabled = false;
 
-      AFRAME.registerComponent('markerhandler', {
+      AFRAME.registerComponent('markerfound-handler', {
         init: function () {
           this.el.sceneEl.addEventListener('markerFound', () => {
-            console.log("marker found");
+            
+            secretEnabled = true;
+            console.log("marker found", secretEnabled);
+          })
+        }
+      });
+
+      AFRAME.registerComponent('markerlost-handler', {
+        init: function () {
+          this.el.sceneEl.addEventListener('markerLost', () => {
+            
+            secretEnabled = false;
+            console.log("marker lost", secretEnabled);
+            
+            var secretEl = document.getElementById("secret");
+            if (secretEl.classList.contains('show')) {
+              secretEl.classList.add("hide");
+              secretEl.classList.remove("show");
+            }
           })
         }
       });
@@ -94,7 +99,9 @@
             var x = document.getElementById("secret");
             var markerEl = document.getElementById("markerA");
             console.log("clicked!!!!!!");
-            if (x.classList.contains("hide")) {
+
+
+            if (secretEnabled && x.classList.contains("hide")) {
               x.classList.add("show");
               x.classList.remove("hide");
 
@@ -103,9 +110,6 @@
               var secretText = randomSecret.text;
               console.log('secretText ', secretText); 
               x.innerHTML = secretText;
-            } else {
-              x.classList.add("hide");
-              x.classList.remove("show");
             }
         });
       }});
@@ -132,7 +136,8 @@
         emitevents="true"
         cursor="fuse: false; rayOrigin: mouse;"
         id="markerA"
-        markerhandler
+        markerfound-handler
+        markerlost-handler
       >
         <a-image
           src="https://cdn.aframe.io/examples/ui/karigurashi.jpg"
