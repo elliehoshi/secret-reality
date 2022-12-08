@@ -60,6 +60,14 @@
           {
             "text": "Why is it taboo for a couple to live together before they're married?",
             "id": "005"
+          },
+          {
+            "text": "I will always love you.",
+            "id": "006"
+          },
+          {
+            "text": "I have a nicotine addiction",
+            "id": "007"
           }
         ]
       };
@@ -72,6 +80,18 @@
             
             secretEnabled = true;
             console.log("marker found", secretEnabled);
+            var x = document.getElementById("secret");
+
+            if (secretEnabled && x.classList.contains("hide")) {
+              x.classList.add("show");
+              x.classList.remove("hide");
+
+              var secretArray = secretData.secrets;
+              var randomSecret = secretArray[Math.floor(Math.random()*secretArray.length)];
+              var secretText = randomSecret.text;
+              console.log('secretText ', secretText); 
+              x.innerHTML = secretText;
+            }
           })
         }
       });
@@ -91,28 +111,6 @@
           })
         }
       });
-
-      // ON CLICK SECRET 1
-      AFRAME.registerComponent('clicker', {
-        init: function() {
-          this.el.addEventListener('click', () => {
-            var x = document.getElementById("secret");
-            var markerEl = document.getElementById("markerA");
-            console.log("clicked!!!!!!");
-
-
-            if (secretEnabled && x.classList.contains("hide")) {
-              x.classList.add("show");
-              x.classList.remove("hide");
-
-              var secretArray = secretData.secrets;
-              var randomSecret = secretArray[Math.floor(Math.random()*secretArray.length)];
-              var secretText = randomSecret.text;
-              console.log('secretText ', secretText); 
-              x.innerHTML = secretText;
-            }
-        });
-      }});
     </script>
   </head>
   <body>
@@ -146,7 +144,6 @@
           id="origami"
           rotation="-90 0 0"
           gesture-handler
-          clicker
         ></a-image>
       </a-marker>
 
